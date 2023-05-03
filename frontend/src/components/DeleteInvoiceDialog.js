@@ -8,6 +8,8 @@ import {
   } from '@material-ui/core';
   
   const DeleteInvoiceDialog = ({ open, onClose, onDelete, invoice }) => {
+
+    // Handle Delete Invoice
     const handleDelete = () => {
       onDelete(invoice);
       onClose();

@@ -16,7 +16,19 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const InvoiceList = ({handleSort,sortField,sortOrder,invoices,setSelectedInvoice,setOpenEditInvoiceDialog,setOpenDeleteInvoiceDialog}) => {
+const InvoiceList = (props) => {
+  
+  // Received Props 
+  const {
+    handleSort,
+    sortField,
+    sortOrder,
+    invoices,
+    setSelectedInvoice,
+    setOpenEditInvoiceDialog,
+    setOpenDeleteInvoiceDialog
+  } = props;
+
   const classes = useStyles();
       
   return (

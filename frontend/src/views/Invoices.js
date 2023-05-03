@@ -1,10 +1,11 @@
+// Import the necessary modules
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { 
   TablePagination 
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+// Import Components for further use
 import SearchInvoices from '../components/SearchInvoices';
 import InvoicesList from '../components/InvoicesList';
 
@@ -12,10 +13,10 @@ import AddInvoiceDialog from '../components/AddInvoiceDialog';
 import EditInvoiceDialog from '../components/EditInvoiceDialog';
 import DeleteInvoiceDialog from '../components/DeleteInvoiceDialog';
 
+// Import actions 
 import { getInvoices, addInvoice, editInvoice, deleteInvoice } from '../actions/api';
 
-axios.defaults.baseURL = 'http://localhost:3001';
-
+// Styling the component
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -36,18 +37,30 @@ const useStyles = makeStyles(theme => ({
 const Invoices = () => {
   const classes = useStyles();
 
+  // States for managing invoices data, filters, and sorting
   const [invoices, setInvoices] = useState([]);
   const [totalInvoices, setTotalInvoices] = useState(0);
-  const [selectedInvoice, setSelectedInvoice] = useState({});
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [openAddInvoiceDialog, setOpenAddInvoiceDialog] = useState(false);
-  const [openEditInvoiceDialog, setOpenEditInvoiceDialog] = useState(false);
-  const [openDeleteInvoiceDialog, setOpenDeleteInvoiceDialog] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortField, setSortField] = useState('');
   const [sortOrder, setSortOrder] = useState('');
+  const [selectedInvoice, setSelectedInvoice] = useState({});
 
+  // States for managing pagination
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  
+  // State for managing dialog boxes (add, edit, delete)
+  const [openAddInvoiceDialog, setOpenAddInvoiceDialog] = useState(false);
+  const [openEditInvoiceDialog, setOpenEditInvoiceDialog] = useState(false);
+  const [openDeleteInvoiceDialog, setOpenDeleteInvoiceDialog] = useState(false);
+
+  // Effect hook to fetch invoices data from API on component mount
+  useEffect(() => {
+    fetchInvoices();
+  }, [sortOrder, searchTerm, rowsPerPage, page]);
+
+  
+  // Handle fetch Invoices from API
   const fetchInvoices = async () => {
     try {
       const response = await getInvoices({
@@ -65,20 +78,24 @@ const Invoices = () => {
     }
   };
       
+  // Handle search input change
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
     setPage(0);
   };
       
+  // Handle page change
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };
-      
+  
+  // Handle rows per page change
   const handleRowsPerPageChange = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
       
+  // Handle Add new Invoice using API
   const handleAddInvoice = async (newInvoice) => {
     try {
       const response = await addInvoice(newInvoice);
@@ -89,6 +106,7 @@ const Invoices = () => {
     }
   };
       
+  // Handle Edit Invoice using API
   const handleEditInvoice = async (updatedInvoice) => {
     try {
       const response = await editInvoice(selectedInvoice.id,updatedInvoice);
@@ -100,6 +118,7 @@ const Invoices = () => {
     }
   };
       
+  // Handle Delete Invoice using API
   const handleDeleteInvoice = async () => {
     try {
       await deleteInvoice(selectedInvoice.id);
@@ -111,6 +130,7 @@ const Invoices = () => {
     }
   };
 
+  // Handle sort field change
   const handleSort = field => {
     setSortField(field);
 
@@ -121,11 +141,6 @@ const Invoices = () => {
     }
     setPage(0)
   };
-      
-  useEffect(() => {
-    fetchInvoices();
-  }, [sortOrder,searchTerm,rowsPerPage,page]);
-
       
   return (
     <div className={classes.root}>

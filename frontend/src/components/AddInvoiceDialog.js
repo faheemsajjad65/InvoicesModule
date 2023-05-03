@@ -9,12 +9,15 @@ import {
 } from '@material-ui/core';
 
 const AddInvoiceDialog = ({ open, onClose, onAdd }) => {
+
+  // States for managing dialog box fields
   const [invoiceNo, setInvoiceNo] = useState('');
   const [description, setDescription] = useState('');
   const [status, setStatus] = useState('');
   const [createdDate, setCreatedDate] = useState('');
   const [amount, setAmount] = useState('');
 
+  // Handle add new invoice params
   const handleAdd = () => {
     const newInvoice = {
       invoiceNo,

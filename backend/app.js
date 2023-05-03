@@ -1,9 +1,12 @@
+// Import the necessary modules
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { v4: uuidv4 } = require('uuid');
 
+// Create a new Express app
 const app = express();
+
 const port = 3001;
 
 let invoices = [  
@@ -30,197 +33,17 @@ let invoices = [
     status: 'Overdue',    
     createdDate: '2022-03-01',    
     amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-004',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-005',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-006',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-007',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-008',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-009',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-010',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-011',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-012',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-013',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-014',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-015',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-016',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-017',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-018',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-019',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-020',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-021',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-022',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-023',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-024',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-025',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  },  
-  {    
-    id: uuidv4(),    
-    invoiceNo: 'INV-026',   
-    description: 'E-commerce website development',    
-    status: 'Overdue',    
-    createdDate: '2022-03-01',    
-    amount: 12000  
-  }  
+  },
   // ... up to 17 entries
 ];
 
+// Set up CORS headers to allow cross-origin requests
 app.use(cors());
+
+// Parse JSON request bodies
 app.use(bodyParser.json());
 
+// Define the routes for get all invoices with filters
 app.get('/invoices', (req, res) => {
   let { search, sort, order, page, limit } = req.query;
 
@@ -247,6 +70,7 @@ app.get('/invoices', (req, res) => {
   const start = page * limit;
   const end = start + parseInt(limit);
 
+  // Filter Invoices as per params
   const filteredInvoices = invoices.filter(
     invoice =>
       invoice.invoiceNo.toLowerCase().includes(search.toLowerCase()) ||
@@ -256,6 +80,7 @@ app.get('/invoices', (req, res) => {
       invoice.amount.toString().includes(search)
   );
 
+  // Sort Invoices as per need
   const sortedInvoices = filteredInvoices.sort((a, b) => {
     if (order === 'asc') {
       return a[sort] > b[sort] ? 1 : -1;
@@ -264,6 +89,7 @@ app.get('/invoices', (req, res) => {
     }
   });
 
+  // Get Invoices according to pagination
   const slicedInvoices = sortedInvoices.slice(start, end);
 
   res.json({
@@ -272,6 +98,7 @@ app.get('/invoices', (req, res) => {
   });
 });
 
+// Define the routes for post/add a new invoices with params
 app.post('/invoices', (req, res) => {
   const { invoiceNo, description, status, createdDate, amount } = req.body;
   const newInvoice = {
@@ -287,6 +114,7 @@ app.post('/invoices', (req, res) => {
   res.json({ success: true });
 });
     
+// Define the routes for update a new invoices with params
 app.put('/invoices/:id', (req, res) => {
   const id = req.params.id;
   const { invoiceNo, description, status, createdDate, amount } = req.body;
@@ -305,7 +133,9 @@ app.put('/invoices/:id', (req, res) => {
     res.json({ success: true });
   }
 });
-    
+   
+
+// Define the routes for remove invoices
 app.delete('/invoices/:id', (req, res) => {
   const id = req.params.id;
   const index = invoices.findIndex(invoice => invoice.id === id);
@@ -317,6 +147,7 @@ app.delete('/invoices/:id', (req, res) => {
   }
 });
     
+// Server Listen on specific port
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });

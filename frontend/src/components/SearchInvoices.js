@@ -17,7 +17,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SearchInvoices = ({handleSearch,setOpenAddInvoiceDialog}) => {
+const SearchInvoices = (props) => {
+
+  const {
+    handleSearch,
+    setOpenAddInvoiceDialog
+  } = props;
+  
   const classes = useStyles();
       
   return (

@@ -9,12 +9,15 @@ import {
 } from '@material-ui/core';
 
 const EditInvoiceDialog = ({ open, onClose, onEdit, invoice }) => {
+
+  // States for managing dialog box fields
   const [invoiceNo, setInvoiceNo] = useState('');
   const [description, setDescription] = useState('');
   const [status, setStatus] = useState('');
   const [createdDate, setCreatedDate] = useState('');
   const [amount, setAmount] = useState('');
 
+  // Effect hook invoices data on component mount
   useEffect(() => {
     setInvoiceNo(invoice.invoiceNo);
     setDescription(invoice.description);
@@ -23,6 +26,7 @@ const EditInvoiceDialog = ({ open, onClose, onEdit, invoice }) => {
     setAmount(invoice.amount);
   }, [invoice]);
 
+  // Handle Save form
   const handleSave = () => {
     const updatedInvoice = {
       ...invoice,
